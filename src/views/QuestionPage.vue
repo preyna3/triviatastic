@@ -10,6 +10,7 @@ import useColor from '@/composables/useColor'
 import useScore from '@/composables/useScore'
 import BaseTitle from '@/components/BaseTitle.vue'
 import DifficultyChip from '@/components/DifficultyChip.vue'
+const i = 0
 const route = useRoute()
 const router = useRouter()
 const colors = useColor()
@@ -34,7 +35,12 @@ onMounted(async () => {
     id: answers.value.length,
     correct: true,
     answer: question.value.correct_answer,
-    points: question.value.difficulty === 'easy' ? 10 : question.value.difficulty === 'medium' ? 20 : 30,
+    points:
+      question.value.difficulty === 'easy'
+        ? 10
+        : question.value.difficulty === 'medium'
+        ? 20
+        : 30,
   })
   question.value.incorrect_answers.map((answer) => {
     answers.value.push({
@@ -53,8 +59,14 @@ onMounted(async () => {
     <BaseTitle> {{ question.category }}</BaseTitle>
     <p class="question" v-html="question.question" />
     <div class="answers">
-      <div v-for="answer in answers" :key="answer.id" :class="colors.getColor(answer.id)" class="answer"
-        @click="handleAnswer(answer.points)" v-html="answer.answer" />
+      <div
+        v-for="answer in answers"
+        :key="answer.id"
+        :class="colors.getColor(i++)"
+        class="answer"
+        @click="handleAnswer(answer.points)"
+        v-html="answer.answer"
+      />
     </div>
     <DifficultyChip :difficulty="question.difficulty" />
   </div>
