@@ -10,7 +10,7 @@ import useColor from '@/composables/useColor'
 import useScore from '@/composables/useScore'
 import BaseTitle from '@/components/BaseTitle.vue'
 import DifficultyChip from '@/components/DifficultyChip.vue'
-const i = 0
+let i = 0
 const route = useRoute()
 const router = useRouter()
 const colors = useColor()
