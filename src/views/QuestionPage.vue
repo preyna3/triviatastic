@@ -68,9 +68,11 @@ onMounted(async () => {
         v-html="answer.answer"
       />
     </div>
+
     <DifficultyChip :difficulty="question.difficulty" />
   </div>
   <div v-else class="loading">Loading...</div>
+
   <NotificationAnswers v-if="showNotification" :correct="isCorrect" />
 </template>
 
